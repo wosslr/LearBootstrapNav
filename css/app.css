@@ -1,5 +1,10 @@
+body{
+    font-family: 'Microsoft Yahei', '微软雅黑', '宋体', \5b8b\4f53, Tahoma, Arial, Helvetica, STHeiti;
+}
+
 .navbar-static-top {
     background: #212121;
+    margin-bottom: 6px;
 }
 
 .navbar-brand {
