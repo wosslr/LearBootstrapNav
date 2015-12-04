@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.canvasjs.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+
+            $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.csv&callback=?', function(csv){
+                console.log(csv);
+            })
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                title: {
+                    text: "Adding New DataPoints Dynamically"
+                },
+                data: [
+                    {
+                        type: "spline",
+                        dataPoints: [
+                            { y: 10 },
+                            { y:  4 },
+                            { y: 18 },
+                            { y:  8 }
+                        ]
+                    }
+                ]
+            });
+            chart.render();
+
+            $("#addDataPoint").click(function () {
+
+                var length = chart.options.data[0].dataPoints.length;
+                chart.options.data[0].dataPoints.push({ y: 25 - Math.random() * 10});
+                chart.render();
+
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="chartContainer" style="width:100%; height:280px"></div>
+<button id="addDataPoint">Add DataPoint</button>
+</body>
+
+</html>
